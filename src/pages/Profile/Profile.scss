@@ -1,0 +1,97 @@
+.Page {
+  position: relative;
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  text-align: left;
+  width: 30vw;
+
+  .section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .field {
+    width: 175px;
+  }
+
+  .large-field {
+    width: 200px;
+
+    @media screen and (max-width: 845px) {
+      width: 90vw
+    }
+  }
+}
+
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  position: absolute;
+  margin: 20px 0;
+  top: 0;
+  right: 1vw;
+  text-align: left;
+
+  .embed {
+    position: relative;
+    background: rgba(46, 48, 54, .3);
+    border-color: rgba(46, 48, 54, .6);
+    padding: 15px;
+    min-width: 370px;
+    max-width: 380px;
+    min-height: 50px;
+    border-radius: 5px;
+    border-left: 3.5px solid #404040;
+
+    .title {
+      color: #0096D1;
+      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    .description {
+      color: hsla(0, 0%, 100%, .6);
+    }
+
+    .fields {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px 20px;
+
+
+      .field {
+        .field-name {
+          font-weight: bold;
+        }
+
+        .field-value {}
+      }
+    }
+
+  }
+
+  .image {
+    position: relative;
+    background: rgba(46, 48, 54, .3);
+    min-width: 370px;
+    max-width: 380px;
+    min-height: 50px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 845px) {
+    right: unset;
+    position: unset;
+  }
+}

@@ -8,8 +8,13 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    default:
-      return state;
+    case USER_ACTIONS.GET_PERMISSIONS:
+      return {
+        ...state,
+        permissions: []
+      }
+      default:
+        return state;
   }
 };
 

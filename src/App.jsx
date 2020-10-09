@@ -14,7 +14,7 @@ import {
 import { NavLink, BrowserRouter as Router } from "react-router-dom";
 
 // Icons
-import { Menu } from "@material-ui/icons";
+// import { Menu } from "@material-ui/icons";
 
 // Routes
 import Routes from "./routes";

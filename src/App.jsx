@@ -11,7 +11,7 @@ import {
   AppBar,
   Toolbar,
 } from "@material-ui/core";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { NavLink, BrowserRouter as Router } from "react-router-dom";
 
 // Icons
 import { Menu } from "@material-ui/icons";
@@ -40,9 +40,31 @@ class App extends React.Component {
               <AppBar position="static">
                 <Toolbar className="toolbar">
                   <div className="links">
-                    <Link to="/rules">Rules</Link>
-                    <Link to="/staff">Staff</Link>
-                    <Link to="/profile">Profile</Link>
+                    <NavLink
+                      exact
+                      to="/"
+                      activeClassName="selected"
+                      className="nav-link">
+                      Dashboard
+                    </NavLink>
+                    <NavLink
+                      to="/rules"
+                      activeClassName="selected"
+                      className="nav-link">
+                      Rules
+                    </NavLink>
+                    <NavLink
+                      to="/staff"
+                      activeClassName="selected"
+                      className="nav-link">
+                      Staff
+                    </NavLink>
+                    <NavLink
+                      to="/profile"
+                      activeClassName="selected"
+                      className="nav-link">
+                      Profile
+                    </NavLink>
                   </div>
                 </Toolbar>
               </AppBar>

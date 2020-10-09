@@ -92,6 +92,9 @@ class Profile extends Component {
     super();
 
     this.state = {
+      user: {
+        id: "",
+      },
       profile: {
         weight: "",
         length: "",
@@ -130,6 +133,19 @@ class Profile extends Component {
     });
   }
 
+  componentDidMount() {
+    // Set user id in state from url param
+    if (this.props.match.isExact) {
+      this.setState({
+        ...this.state,
+        user: {
+          ...this.state.user,
+          id: this.props.match.params.userId,
+        },
+      });
+    }
+  }
+
   get age() {
     const ageDifMs = Date.now() - new Date(this.state.profile.dob).getTime();
     const ageDate = new Date(ageDifMs);
@@ -143,7 +159,7 @@ class Profile extends Component {
           <div className="section">
             <TextField
               name="weight"
-              className="large-field"
+              className="field"
               label="Current weight"
               type="number"
               variant="outlined"
@@ -152,11 +168,14 @@ class Profile extends Component {
                 endAdornment: (
                   <InputAdornment position="end">KG</InputAdornment>
                 ),
+                inputProps: {
+                  min: 0,
+                },
               }}
             />
             <TextField
               name="length"
-              className="large-field"
+              className="field"
               label="Current length"
               type="number"
               variant="outlined"
@@ -165,11 +184,15 @@ class Profile extends Component {
                 endAdornment: (
                   <InputAdornment position="end">CM</InputAdornment>
                 ),
+                inputProps: {
+                  min: 0,
+                },
               }}
             />
             <KeyboardDatePicker
-              className="large-field"
+              className="field"
               format="dd/MM/yyyy"
+              placeholder="DD/MM/YYYY"
               name="dob"
               label="Birthday"
               variant="inline"
@@ -177,12 +200,12 @@ class Profile extends Component {
               autoOk
               maxDate={new Date()}
               value={this.state.profile.dob}
-              InputAdornmentProps={{ position: "start" }}
+              InputAdornmentProps={{ position: "end" }}
               onChange={this.handleDobChange}
             />
           </div>
           <div className="section">
-            <FormControl variant="outlined" className="large-field">
+            <FormControl variant="outlined" className="field">
               <InputLabel id="goals-label">Goal</InputLabel>
               <Select
                 name="goal"
@@ -197,7 +220,7 @@ class Profile extends Component {
                 <MenuItem value="Lose weight">Lose weight</MenuItem>
               </Select>
             </FormControl>
-            <FormControl variant="outlined" className="large-field">
+            <FormControl variant="outlined" className="field">
               <InputLabel id="body-type-label">Body type</InputLabel>
               <Select
                 name="bodyType"
@@ -216,7 +239,7 @@ class Profile extends Component {
                 <MenuItem value="Underweight">Underweight</MenuItem>
               </Select>
             </FormControl>
-            <FormControl variant="outlined" className="large-field">
+            <FormControl variant="outlined" className="field">
               <InputLabel id="gender-label">Gender</InputLabel>
               <Select
                 name="gender"
@@ -230,7 +253,7 @@ class Profile extends Component {
                 <MenuItem value="Male">Male</MenuItem>
               </Select>
             </FormControl>
-            <FormControl variant="outlined" className="large-field">
+            <FormControl variant="outlined" className="field">
               <InputLabel id="special-label">Special</InputLabel>
               <Select
                 name="special"
@@ -246,7 +269,7 @@ class Profile extends Component {
                 <MenuItem value="MyFitnessPal">MyFitnessPal User</MenuItem>
               </Select>
             </FormControl>
-            <FormControl variant="outlined" className="large-field">
+            <FormControl variant="outlined" className="field">
               <InputLabel id="region-label">Region</InputLabel>
               <Select
                 name="region"
@@ -264,7 +287,7 @@ class Profile extends Component {
                 <MenuItem value="Oceania">Oceania</MenuItem>
               </Select>
             </FormControl>
-            <FormControl key="sport" variant="outlined" className="large-field">
+            <FormControl variant="outlined" className="field">
               <InputLabel id="sport-label">Favorite Sport</InputLabel>
               <Select
                 name="sport"
@@ -286,12 +309,17 @@ class Profile extends Component {
                 ])}
               </Select>
             </FormControl>
+            <TextField
+              multiline
+              name="goals"
+              variant="outlined"
+              label="Goals"
+              className="large-field"
+              onChange={this.handleChange}
+            />
           </div>
         </div>
         <div className="preview">
-          <Typography variant="h5" color="textPrimary" className="title">
-            Preview
-          </Typography>
           <div className="embed">
             <Typography variant="body1" color="inherit" className="title">
               User Profile
@@ -357,7 +385,7 @@ class Profile extends Component {
                   variant="body2"
                   color="textPrimary"
                   className="field-value">
-                  {this.state.profile.gender}
+                  {this.state.profile.gender || "Not provided"}
                 </Typography>
               </div>
               <div className="field">
@@ -371,7 +399,7 @@ class Profile extends Component {
                   variant="body2"
                   color="textPrimary"
                   className="field-value">
-                  {this.state.profile.goal}
+                  {this.state.profile.goal || "Not provided"}
                 </Typography>
               </div>
               <div className="field">
@@ -428,6 +456,20 @@ class Profile extends Component {
                   color="textPrimary"
                   className="field-value">
                   {this.state.profile.sport}
+                </Typography>
+              </div>
+              <div className="large-field">
+                <Typography
+                  variant="body2"
+                  color="textPrimary"
+                  className="field-name">
+                  Goals
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textPrimary"
+                  className="field-value">
+                  {this.state.profile.goals}
                 </Typography>
               </div>
             </div>

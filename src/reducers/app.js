@@ -13,8 +13,13 @@ const defaultState = {
 
 const appReducer = (state = defaultState, action) => {
   switch (action.type) {
-    default:
-      return state;
+    case APP_ACTIONS.SET_THEME:
+      return {
+        ...state,
+        theme: 'dark'
+      }
+      default:
+        return state;
   }
 }
 

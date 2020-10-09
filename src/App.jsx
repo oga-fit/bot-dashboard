@@ -35,7 +35,7 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Router>
+          <Router basename={`${process.env.REACT_APP_BASENAME}`}>
             <div className="App">
               <AppBar position="static">
                 <Toolbar className="toolbar">

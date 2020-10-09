@@ -17,11 +17,11 @@
   }
 
   .field {
-    width: 175px;
+    width: 200px;
   }
 
   .large-field {
-    width: 200px;
+    width: 420px;
 
     @media screen and (max-width: 845px) {
       width: 90vw
@@ -76,6 +76,14 @@
         }
 
         .field-value {}
+      }
+
+      .large-field {
+        grid-column: 1 / span 3;
+
+        .field-name {
+          font-weight: bold;
+        }
       }
     }
 

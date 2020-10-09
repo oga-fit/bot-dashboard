@@ -8,7 +8,11 @@ a {
 }
 
 .toolbar {
-  .links {}
+  .links {
+    font-weight: bold;
+    .nav-link {
+    }
+  }
 }
 
 .links {
@@ -18,4 +22,9 @@ a {
 
 .light-text {
   color: white;
+}
+
+.selected {
+  z-index: 1;
+  border-bottom: 1px midnightblue solid;
 }

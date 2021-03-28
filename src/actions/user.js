@@ -1,3 +1,0 @@
-export const USER_ACTIONS = {
-  GET_PERMISSIONS: "GET_PERMISSIONS"
-};

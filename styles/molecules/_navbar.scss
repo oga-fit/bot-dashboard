@@ -1,0 +1,15 @@
+.navbar {
+  display: inline-flex;
+
+  .title {
+    flex-grow: 1;
+  }
+
+  .profile {
+    &__avatar {
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+    }
+  }
+}
